@@ -1,0 +1,70 @@
+{
+    "categories": [
+        "router",
+        "client",
+        "dns",
+        "server"
+    ],
+    "commands": [
+        {
+            "cmd": "ip domain-lookup",
+            "desc": "enable DNS-based translation",
+            "notes": "Enabled by default. Prefix with 'no' to disable",
+            "categories": [
+                "router",
+                "dns",
+                "client"
+            ]
+        },
+        {
+            "cmd": "ip name-server 123.123.123.123",
+            "desc": "specify address of DNS server",
+            "notes": "",
+            "categories": [
+                "router",
+                "client",
+                "dns"
+            ]
+        },
+        {
+            "cmd": "ip domain-name subnetA.lab",
+            "desc": "specify primary domain name",
+            "notes": "",
+            "categories": [
+                "router",
+                "client",
+                "dns"
+            ]
+        },
+        {
+            "cmd": "ip domain-list subnetB.lab",
+            "desc": "specify additional suffixes to search for",
+            "notes": "",
+            "categories": [
+                "router",
+                "client",
+                "dns"
+            ]
+        },
+        {
+            "cmd": "ip dns server",
+            "desc": "set up router as DNS server",
+            "notes": "",
+            "categories": [
+                "router",
+                "dns",
+                "server"
+            ]
+        },
+        {
+            "cmd": "ip host HostA 123.123.123.123",
+            "desc": "add static DNS record",
+            "notes": "",
+            "categories": [
+                "router",
+                "dns",
+                "server"
+            ]
+        }
+    ]
+}

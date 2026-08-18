@@ -1,0 +1,19 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Pytest
+.pytest_cache/
+
+# Type checking
+.pyright/
+
+# Environment variables / secrets
+.env
+.env.*
+
+# OS files
+.DS_Store
