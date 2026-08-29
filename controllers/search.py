@@ -115,6 +115,7 @@ class SearchController:
             )
 
     def _on_search_buffer_changed(self, buffer):
+        self._view._results_scroll_pane.vertical_scroll = 0
         text = str(buffer.text.strip())
         if not text.startswith(":"):
             self._model.search(buffer.text)
@@ -172,6 +173,7 @@ class SearchController:
             "tab", filter=Condition(lambda: not self.layout.buffer_has_focus)
         )
         def focus_search(event):
+            self._view._results_scroll_pane.vertical_scroll = 0
             self._focused_index = 0
             self.layout.focus(self._view.search_buffer)
 
