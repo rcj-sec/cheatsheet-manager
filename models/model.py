@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 
 from prompt_toolkit import prompt
@@ -15,28 +16,30 @@ class CheatSheet:
         self.filtered_commands = self._commands.copy()
 
     def search(self, query: str):
-        def search_in_commands():
-            nonlocal query
-            query = query[1:].strip()
-            return [
-                command for command in self._commands if query in command["cmd"].lower()
-            ]
-
-        def search_in_categories():
-            return [
-                command
-                for command in self._commands
-                if all(
-                    category in [c.lower() for c in command["categories"]]
-                    for category in query.split()
-                )
-            ]
-
         query = query.strip().lower()
 
-        self.filtered_commands = (
-            search_in_commands() if query.startswith("/") else search_in_categories()
-        )
+        query_parts = re.split(r"(?=/)", query)
+
+        self.filtered_commands = self._commands.copy()
+
+        for part in query_parts:
+            if part.startswith("/"):
+                query = part[1:].strip()
+                self.filtered_commands = [
+                    command
+                    for command in self.filtered_commands
+                    if query in command["cmd"].lower()
+                ]
+            else:
+                categories = part.split()
+                self.filtered_commands = [
+                    command
+                    for command in self.filtered_commands
+                    if all(
+                        category in [cat.lower() for cat in command["categories"]]
+                        for category in categories
+                    )
+                ]
 
     def delete_last_command(self):
         self._commands.pop()
