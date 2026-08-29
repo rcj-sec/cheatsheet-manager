@@ -17,9 +17,9 @@ class EditView:
     def __init__(self):
         self.status = FormattedTextControl()
 
-        self.edit_cmd_buffer = Buffer()
-        self.edit_desc_buffer = Buffer()
-        self.edit_notes_buffer = Buffer()
+        self.edit_cmd_buffer = Buffer(multiline=True)
+        self.edit_desc_buffer = Buffer(multiline=True)
+        self.edit_notes_buffer = Buffer(multiline=True)
         self.edit_cats_buffer = Buffer(
             complete_while_typing=True, validate_while_typing=True
         )
