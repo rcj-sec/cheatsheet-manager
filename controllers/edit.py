@@ -69,7 +69,7 @@ class EditController:
     def define_keybinds(self):
         self.binds = KeyBindings()
 
-        @self.binds.add("enter")
+        @self.binds.add("c-m")
         def validate(event):
             self._view.edit_cmd_buffer.validate()
 
