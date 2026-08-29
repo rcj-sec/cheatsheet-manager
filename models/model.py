@@ -3,9 +3,11 @@ import sys
 
 from prompt_toolkit import prompt
 
+DEFAULT_JSON_FILE = "cheatsheet.json"
+
 
 class CheatSheet:
-    def __init__(self, filename="cheatsheet.json"):
+    def __init__(self, filename=DEFAULT_JSON_FILE):
         self._filename = filename
         data = self.load() or {}
         self._commands = data["commands"]
@@ -76,13 +78,12 @@ class CheatSheet:
             with open(self._filename, "r") as file:
                 return json.load(file)
         except FileNotFoundError:
-            if self._filename != "cheatsheet.json":
-                print(f"File does not exist: {self._filename}")
-                print("It will be created after creating your first command.")
-                choice = prompt("Proceed? [y/N]: ")
+            print(f"File does not exist: {self._filename}")
+            print("It will be created after creating your first command.")
+            choice = prompt("Proceed? [y/N]: ")
 
-                if choice not in ["y", "yes"]:
-                    sys.exit()
+            if choice not in ["y", "yes"]:
+                sys.exit()
 
     def save(self):
         with open(self._filename, "w") as file:
