@@ -153,9 +153,10 @@ class SearchController:
             "up", filter=Condition(lambda: bool(self._model.filtered_commands))
         )
         def cycle_focus_up(event):
-            self._focused_index = (self._focused_index - 1) % len(
-                self._model.filtered_commands
-            )
+            if self._focused_index or self.layout.buffer_has_focus:
+                self._focused_index = (self._focused_index - 1) % len(
+                    self._model.filtered_commands
+                )
             self.layout.focus_previous()
 
         @self.binds.add(
