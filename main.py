@@ -1,5 +1,7 @@
 import argparse
 
+from prompt_toolkit import prompt
+
 from cli.interactive import InteractiveCLI
 from controllers.controllerv2 import MainControllerV2
 from models.model import CheatSheet
