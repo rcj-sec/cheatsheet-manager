@@ -14,9 +14,11 @@ def parse_args():
     parser = argparse.ArgumentParser(prog="sheets", description="Cheatsheet manager")
 
     parser.add_argument(
-        "sheet", nargs="?", help="Name of JSON file in default JSON dir. No extension."
+        "sheet",
+        nargs="?",
+        help="Name of JSON file in default JSON directory (~/dotfiles/cheatsheets/ by default). No extension.",
     )
-    parser.add_argument("-f", "--filename")
+    parser.add_argument("-f", "--filename", help="Path to JSON file to use as sheet")
 
     parser.add_argument(
         "-i", "--interactive", action="store_true", help="Run in interactive mode."
