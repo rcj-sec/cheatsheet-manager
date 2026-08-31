@@ -11,8 +11,14 @@ class CheatSheet:
     def __init__(self, filename=DEFAULT_JSON_FILE):
         self._filename = filename
         data = self.load() or {}
-        self._commands = data["commands"]
-        self.categories = data["categories"]
+
+        if not data:
+            self._commands = []
+            self.categories = []
+        else:
+            self._commands = data["commands"] or []
+            self.categories = data["categories"] or []
+
         self.filtered_commands = self._commands.copy()
 
     def search(self, query: str):
